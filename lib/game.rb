@@ -57,6 +57,7 @@ class Game
    def turn
         puts "Please enter a number 1-9:"
         input = current_player
+        binding.pry
    end
 
 
