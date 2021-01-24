@@ -5,7 +5,8 @@ module Players
         def move(board)
             
             puts "please enter your selection"
-            gets.strip
+            input = gets.strip
+            # index = input.to_i - 1
         end
 
 

@@ -23,7 +23,7 @@ class Game
    end
 
    def current_player
-        board.turn_count % 2 == 0 ? player_1 : player_2
+        board.turn_count % 2 == 0 ? @player_1 : @player_2
         #player 1 starts with the odd counting , player 2 is the second - even
         #in this method i am asking if the board count can be divided by 2 with a remainder of zero
         # it means that it is player 1 turn - because if the count is 2 then 3th will be player 1
@@ -56,9 +56,23 @@ class Game
 
    def turn
         puts "Please enter a number 1-9:"
-        input = current_player
-        binding.pry
+        input = current_player.move(@board)
+        if @board.valid_move?(input)
+            @board.update(input, current_player)
+        else
+            turn
+        end
+        @board.display
    end
+
+    def play
+    turn until over?
+    if won?
+      puts "Congratulations #{winner}!"
+    elsif draw?
+      puts "Cat's Game!"
+     end
+    end
 
 
 
